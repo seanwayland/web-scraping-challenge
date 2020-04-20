@@ -15,7 +15,7 @@ browser.visit(url)
 html = browser.html
 time.sleep(5)
 # Parse HTML with Beautiful Soup
-'''
+
 soup = BeautifulSoup(html, 'html.parser')
 # Parse HTML with Beautiful Soup
 
@@ -24,11 +24,6 @@ latest_news_title = soup.find(class_='list_text').find('a').text
 print(latest_news_title)
 latest_teaser = soup.find('div', class_='list_text').find('div', class_='article_teaser_body').text
 print(latest_teaser)
-
-
-'''
-
-
 
 
 
@@ -59,5 +54,13 @@ fullURL = baseURL+ imgURL
 print(fullURL)
 '''
 
+twitter_url = 'https://twitter.com/marswxreport?lang=en'
+result = requests.get(twitter_url)
+print(result)
+html = result.text
 
-
+#create BeautifulSoup object and parse
+soup = BeautifulSoup(html, 'html.parser')
+#get the weather from the newest tweet
+mars_weather = soup.find(class_='tweet-text').get_text()
+print(mars_weather)
