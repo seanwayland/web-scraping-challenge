@@ -15,7 +15,7 @@ def getLatest():
     db = client.marsDb
     #data = db.scrapes.find()
     data = db.scrapes2.find().sort('_id', -1)
-    #print(data)
+    print(data[0])
     return data[0]
 
 
