@@ -32,6 +32,15 @@
       </div>
 
       <div>
+          {% for item in mars.Images_URLS -%}
+                <div>
+          <img src={{item.img_url}} alt="Italian Trulli">
+      </div>
+{%- endfor %}
+
+      </div>
+
+      <div>
           <img src={{mars.latest_image}} alt="Italian Trulli">
       </div>
   </div>
