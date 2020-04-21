@@ -11,7 +11,7 @@ def tryNasa(retries=10):
 
         #executable_path = {'executable_path': 'chomedriver.exe'}
         executable_path = {'executable_path': 'chromedriver.exe'}
-        browser = Browser('chrome', **executable_path, headless=False)
+        browser = Browser('chrome', **executable_path, headless=True)
         url = 'https://mars.nasa.gov/news/?'
         browser.visit(url)
         html = browser.html
@@ -36,7 +36,7 @@ def tryNasa(retries=10):
 def scrape():
 
     executable_path = {'executable_path': 'chromedriver.exe'}
-    browser = Browser('chrome', **executable_path, headless=False)
+    browser = Browser('chrome', **executable_path, headless=True)
     # HTML object
 
     tryNasa()
@@ -134,8 +134,10 @@ def scrape():
         browser.back()
 
     #print(imageURLS)
-    result = { "latest news title ": latest_news_title,"latest teaser ": latest_teaser,
-               "latest image ": fullURL, "weather tweet": mars_weather, "Facts table": html_table, "Images URLS ": imageURLS}
+    result = { "latest_news_title": latest_news_title,"latest_teaser": latest_teaser,
+               "latest_image": fullURL, "weather_tweet": mars_weather, "Facts_table": html_table, "Images_URLS": imageURLS}
+
+    browser.quit()
 
     return result
 

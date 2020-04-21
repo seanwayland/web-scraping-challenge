@@ -14,7 +14,7 @@ def getLatest():
 # Connect to a database. Will create one if not already available.
     db = client.marsDb
     #data = db.scrapes.find()
-    data = db.scrapes.find().sort('_id', -1)
+    data = db.scrapes2.find().sort('_id', -1)
     #print(data)
     return data[0]
 
@@ -34,11 +34,10 @@ def update():
     mars_data = scrape()
     #print(mars_data)
 
-    data = db.scrapes
+    data = db.scrapes2
     post_id = data.insert_one(mars_data).inserted_id
     print(post_id)
 
-    #query = data.find_one()
-    #print(query)
+
 
 
