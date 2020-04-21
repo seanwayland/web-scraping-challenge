@@ -1,3 +1,9 @@
+
+
+
+
+
+
 from flask import Flask, jsonify, render_template
 
 from flask import Flask, render_template
@@ -20,12 +26,21 @@ client = pymongo.MongoClient(conn)
 marsDatabase = client.marsDb
 
 '''Define the Routes'''
+'''
+mars = marsDatabase
+mars_data = scrape()
+#update the mars db w/ mars_data
+mars.update({}, mars_data, upsert=True)
+
+'''
+
+
 
 #index
 @app.route('/')
 def index():
     mars = marsDatabase.find_one()
-    return render_template('index.html', mars=mars)
+    return render_template('index.html', mars = mars )
 
 @app.route('/scrape')
 def scrapethatbadboy():
