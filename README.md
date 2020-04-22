@@ -9,7 +9,12 @@ To run gitclone and then run app.py
 Point your browser to http://127.0.0.1:5000/
 <br>
 Click Get Newest Data to retrieve latest data from websites. 
-
+<br>
+app.py serves the webpage. 
+<br>
+scape_mars.py scrapes the pages 
+<br>
+index.html in templates is the page for the application 
 
 SITES SCRAPED : 
 
