@@ -1,5 +1,18 @@
 # web-scraping-demo 
 
+DATA SCRAPED FROM THESE INTERNET USING PYTHON, MONGO , FLASK, SPLINTER, PANDAS , HTML, CSS, BOOTSTRAP 
+
+<br>
+
+To run gitclone and then run app.py 
+<br>
+Point your browser to http://127.0.0.1:5000/
+<br>
+Click Get Newest Data to retrieve latest data from websites. 
+
+
+SITES SCRAPED : 
+
 https://mars.nasa.gov/news/
 
 <br>
