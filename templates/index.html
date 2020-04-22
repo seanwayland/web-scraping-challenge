@@ -10,40 +10,68 @@
 </head>
 
 <body>
+        <style type="text/css">
+            body { background: lightcyan !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+         </style>
   <div class="container text-center">
-    <h1 class="jumbotron">MARS INFO</h1>
+    <h1 class="jumbotron">LATEST MARS INFO</h1>
 
   <div>
-      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get newest Data!</a></p>
     </div>
 
   <div>
 
-          <p class="font-weight-bold"> LATEST NEWS: </p>
+          <p style="font-weight: bold"  class="font-weight-bold"> LATEST NEWS: </p>
           <p> {{ mars.latest_news_title }}</p>
+
           <p>{{ mars.latest_teaser }}</p>
-          <p class="font-weight-bold"> LATEST WEATHER: </p>
+
+      <a href="https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest"  target="_blank">More News</a>
+     <br>
+      <br>
+          <p class="font-weight-bold" style="font-weight: bold" > LATEST WEATHER: </p>
           <p> {{ mars.weather_tweet }} </p>
 
-
+<br>
     </div>
-      <div>
+      <div  style="font-weight: bold" class="font-weight-bold">
+          MARS FACTS:
+          <br>
           {{ mars.Facts_table|safe }}
       </div>
 
-      <div>
+
+
+            <h3 class="float-left"> LATEST IMAGES FROM MARS</h3>
+            <br>
+      <div class="container">
+
           {% for item in mars.Images_URLS -%}
-                <div>
-          <img src={{item.img_url}} alt="Italian Trulli">
-      </div>
+                          <div class="col-md-3" style="padding-left: 10px;  padding-right: 10px;">
+                    <img src={{item.img_url}} alt="Italian Trulli" class="img-responsive">
+                              <p>{{item.title}}</p>
+                </div>
+
+
 {%- endfor %}
 
+
+
+
+
+            </div>
+
       </div>
 
-      <div>
-          <img src={{mars.latest_image}} alt="Italian Trulli">
+                <div class="container col-sm-4"></div>
+
+
+      <div class="col-md-6" >
+          <p>THIS IS WHERE MY HOUSE WILL BE ON MARS! <br> CHECK BACK LATER FOR PHOTOS OF IT</p>
+          <img style="height:25%" class="img-responsive" src={{mars.latest_image}} alt="Italian Trulli">
       </div>
-  </div>
+
 </body>
 
 </html>

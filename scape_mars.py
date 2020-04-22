@@ -42,9 +42,6 @@ def scrape():
     tryNasa()
 
 
-
-
-
     url = 'https://mars.nasa.gov/news/?'
     browser.visit(url)
     html = browser.html
@@ -94,13 +91,28 @@ def scrape():
     #print(mars_weather)
 
 
+    '''
+    https://github.com/RutgersCodingBootcamp/RU-JER-DATA-PT-01-2020/tree/master/01-Lesson-Plans/12-Web-Scraping-and-Document-Databases/2/Activities/09-Ins_Pandas_Scraping/Solved
+
+    '''
+
+
+
+
     facts_url = 'https://space-facts.com/mars/'
     data = pd.read_html(facts_url)
     #print(data)
     data = pd.DataFrame(data)
+    data = pd.DataFrame(data[0][0])
+    data.columns = ['Statistic', ' ']
+    #data.set_index('0', inplace=True)
+    #data.reset_index(drop=True, inplace=True)
+    data.set_index('Statistic', inplace=True)
 
     #convert the data to a HTML table string
     html_table = data.to_html()
+
+    print(html_table)
 
 
     html_table = html_table.replace('\n', '')
@@ -121,7 +133,7 @@ def scrape():
         time.sleep(2)
         links_found[i].click()
         soup = BeautifulSoup(browser.html, 'html.parser')
-        title = (soup.find('h3').text).replace(' Enhanced', '')
+        title = (soup.find('title').text).replace(' Enhanced', '')
         #find the full image
         im = soup.find('a', text='Sample')
         #get the images url
